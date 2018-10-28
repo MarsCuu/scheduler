@@ -4,13 +4,16 @@ spring:
     username: root
     password: 11111
     driver-class-name: com.mysql.jdbc.Driver
-#  rabbitmq:
-#    host: localhost
-#    port: 5672
-#    username: guest
-#    password: guest
-#    publisher-confirms: true
-#    virtual-host: /
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+    publisher-returns: true
+
+
 
   freemarker:
     cache: false

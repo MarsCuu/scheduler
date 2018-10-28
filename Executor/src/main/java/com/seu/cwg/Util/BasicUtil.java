@@ -1,10 +1,8 @@
 package com.seu.cwg.Util;
 
 import com.seu.cwg.Task.BaseJob;
-import org.quartz.Job;
 
 import java.io.*;
-import java.util.UUID;
 
 public class BasicUtil {
 
@@ -13,7 +11,6 @@ public class BasicUtil {
         Class<?> class1 = Class.forName(classname);
         return (BaseJob) class1.newInstance();
     }
-
 
     public static byte[] getBytesFromObject(Serializable obj) throws Exception {
         if (obj == null) {
@@ -33,9 +30,5 @@ public class BasicUtil {
         ByteArrayInputStream bi = new ByteArrayInputStream(objBytes);
         ObjectInputStream oi = new ObjectInputStream(bi);
         return oi.readObject();
-    }
-
-    public static String getUUID(){
-        return UUID.randomUUID().toString();
     }
 }

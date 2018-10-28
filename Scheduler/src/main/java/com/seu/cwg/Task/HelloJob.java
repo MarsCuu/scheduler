@@ -1,5 +1,6 @@
 package com.seu.cwg.Task;
 
+import com.seu.cwg.Bean.JobBean;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -16,6 +17,7 @@ public class HelloJob implements BaseJob {
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
         logger.info("hello job execute " + new Date());
+        System.out.println((JobBean)context.getMergedJobDataMap().get("jobBean"));
         System.out.println("Hello Job");
         try {
             Thread.sleep(5000);

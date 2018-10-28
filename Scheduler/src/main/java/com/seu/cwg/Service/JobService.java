@@ -2,6 +2,7 @@ package com.seu.cwg.Service;
 
 import com.seu.cwg.Bean.JobBean;
 import com.seu.cwg.Dao.JobDao;
+import com.seu.cwg.MQ.Sender;
 import com.seu.cwg.Util.BasicUtil;
 import org.quartz.*;
 import org.slf4j.Logger;
@@ -22,8 +23,9 @@ public class JobService {
     public void addJob(JobBean jobBean){
 
             try {
-                JobDetail jobDetail = JobBuilder.newJob(BasicUtil.getClass(jobBean.getJobBeanClass()).getClass()).
+                JobDetail jobDetail = JobBuilder.newJob(BasicUtil.getClass("com.seu.cwg.Task.TaskDistributed").getClass()).
                         withIdentity(jobBean.getJobName(),jobBean.getJobGroup()).build();
+                jobDetail.getJobDataMap().put("jobBean",jobBean);
                 CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(jobBean.getCronExpression());
 
                 CronTrigger cronTrigger = TriggerBuilder.newTrigger().
@@ -35,6 +37,16 @@ public class JobService {
                 e.printStackTrace();
             }
 
+    }
+
+
+
+    @Autowired
+    Sender sender;
+    public void  testSend(){
+        //sender.send("Linux","LinuxCmd","helloLinux");
+        //sender.send("Linux","testQueue","helloTestQueue");
+        sender.send("Linux","888","hello888");
     }
 
 }

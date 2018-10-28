@@ -17,6 +17,7 @@ public class JobController {
 
     @RequestMapping("/index")
     public void test(){
+        jobService.testSend();
         System.out.println("test");
 
     }
@@ -26,6 +27,7 @@ public class JobController {
                        @RequestParam("jobBeanClass") String jobBeanClass,
                        @RequestParam("cronExpression")String cronExpression,
                        @RequestParam("data") String data,
+                       @RequestParam("type") String type,
                        @RequestParam("jobDescription") String jobDescription,
                        @RequestParam("timeoutMin") Integer timeoutMin,
                        @RequestParam("alarmEmail") String alarmEmail){
@@ -37,6 +39,7 @@ public class JobController {
         jobBean.setCronExpression(cronExpression);
         jobBean.setJobBeanClass(jobBeanClass);
         jobBean.setData(data);
+        jobBean.setType(type);
         jobBean.setStatus(JobBean.STATUS_WAIT_SCHED);
         jobBean.setJobDescription(jobDescription);
         jobBean.setTimeoutMin(timeoutMin);
