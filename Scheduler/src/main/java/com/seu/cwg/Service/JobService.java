@@ -1,7 +1,9 @@
 package com.seu.cwg.Service;
 
 import com.seu.cwg.Bean.JobBean;
+import com.seu.cwg.Bean.JobRecord;
 import com.seu.cwg.Dao.JobDao;
+import com.seu.cwg.Dao.JobRecordDao;
 import com.seu.cwg.MQ.Sender;
 import com.seu.cwg.Util.BasicUtil;
 import org.quartz.*;
@@ -19,6 +21,7 @@ public class JobService {
     Scheduler scheduler;
     @Autowired
     JobDao jobDao;
+
     @Transactional
     public void addJob(JobBean jobBean){
 

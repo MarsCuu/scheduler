@@ -1,6 +1,9 @@
 package com.seu.cwg.Controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.seu.cwg.Bean.JobBean;
+import com.seu.cwg.RPC.ThreadService;
+import com.seu.cwg.RPC.ThreadServiceImpl;
 import com.seu.cwg.Service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +18,20 @@ public class JobController {
     @Autowired
     JobService jobService;
 
+    @Autowired
+    ThreadServiceImpl threadService;
     @RequestMapping("/index")
-    public void test(){
-        jobService.testSend();
-        System.out.println("test");
+    public String test(){
+        String s=  threadService.test();
+        System.out.println(s);
+        return s;
 
+    }
+
+
+
+    public void testUpdate(){
+       // String
     }
     @RequestMapping("/addJob")
     public void addJob(@RequestParam("jobName") String jobName,

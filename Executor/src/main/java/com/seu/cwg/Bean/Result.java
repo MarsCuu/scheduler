@@ -1,18 +1,15 @@
-package com.seu.cwg;
+package com.seu.cwg.Bean;
 
 public class Result {
-    private int code;
+    private Integer code; // 1表示成功  0表示失败
     private String msg;
 
-    public Result() {
 
-    }
-
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

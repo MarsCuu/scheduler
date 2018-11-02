@@ -13,6 +13,17 @@ spring:
     virtual-host: /
     publisher-returns: true
 
+dubbo:
+  application:
+    id: Scheduler1
+    name: dobbo-Scheduler1
+  registry:
+    address: zookeeper://192.168.206.129:2181?backup=192.168.206.128:2181
+  protocol:
+    name : dubbo
+    port : 20880
+  scan : com.seu.cwg.RPC
+
 
 
   freemarker:

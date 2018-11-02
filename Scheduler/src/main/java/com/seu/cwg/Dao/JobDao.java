@@ -15,4 +15,7 @@ public interface JobDao {
     @Insert({"insert into ",TABLE_NAME,"(",INSERT_FIELD ,") values(#{jobName},#{jobGroup},#{jobBeanClass},#{cronExpression},#{data},#{type},#{status},#{jobDescription},#{timeoutMin},#{createTime},#{isModify},#{alarmEmail},#{successCount},#{failCount})"})
     int addJob(JobBean jobBean);
 
+
+
+
 }

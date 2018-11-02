@@ -15,6 +15,8 @@ public class JobRecord implements Serializable {
     private Date triggerTime;
     private Date exeTime;
     private Date endTime;
+    private String executor;
+    private String exeThread;
 
     public Integer getId() {
         return id;
@@ -104,6 +106,22 @@ public class JobRecord implements Serializable {
         this.type = type;
     }
 
+    public String getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(String executor) {
+        this.executor = executor;
+    }
+
+    public String getExeThread() {
+        return exeThread;
+    }
+
+    public void setExeThread(String exeThread) {
+        this.exeThread = exeThread;
+    }
+
 
     @Override
     public String toString() {
@@ -119,6 +137,8 @@ public class JobRecord implements Serializable {
                 ", triggerTime=" + triggerTime +
                 ", exeTime=" + exeTime +
                 ", endTime=" + endTime +
+                ", executor='" + executor + '\'' +
+                ", exeThread='" + exeThread + '\'' +
                 '}';
     }
 }

@@ -1,0 +1,23 @@
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+    publisher-returns: true
+
+dubbo:
+  application:
+    id: Executor1
+    name: dobbo-Executor1
+  registry:
+    address : zookeeper://192.168.206.129:2181?backup=192.168.206.128:2181
+  protocol:
+    name : dubbo
+    port : 20880
+  scan : com.seu.cwg.RPC
+server:
+  port: 8081

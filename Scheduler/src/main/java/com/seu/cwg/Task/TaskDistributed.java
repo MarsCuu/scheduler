@@ -3,7 +3,9 @@ package com.seu.cwg.Task;
 import com.alibaba.fastjson.JSON;
 import com.seu.cwg.Bean.JobBean;
 import com.seu.cwg.Bean.JobRecord;
+import com.seu.cwg.Dao.JobDao;
 import com.seu.cwg.MQ.Sender;
+import com.seu.cwg.Service.JobRecordService;
 import com.seu.cwg.Util.BasicUtil;
 import com.seu.cwg.Util.SpringApplicationContextHolder;
 import org.quartz.JobExecutionContext;
@@ -18,6 +20,8 @@ import java.util.Date;
 
 public class TaskDistributed implements BaseJob {
     private final Logger logger = LoggerFactory.getLogger(TaskDistributed.class);
+
+
 
 
 //   @Autowired
@@ -42,8 +46,12 @@ public class TaskDistributed implements BaseJob {
         jobRecord.setTriggerTime(new Date());
         jobRecord.setEndTime(null);
         jobRecord.setEndTime(null);
+        jobRecord.setExecutor(null);
+        jobRecord.setExeThread(null);
         System.out.println("----------------");
 
+        JobRecordService jobRecordService = (JobRecordService)SpringApplicationContextHolder.getSpringBean("jobRecordService");
+        jobRecordService.addJobRecord(jobRecord);
         routingkey  = jobBean.getType();
         try {
             sender.send(exchange,routingkey, JSON.toJSONString(jobRecord));
